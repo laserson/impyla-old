@@ -15,19 +15,20 @@
 from distutils.core import setup
 
 def readme():
-  with open('README.md', 'r') as ip:
-    return ip.read()
+    with open('README.md', 'r') as ip:
+        return ip.read()
 
 setup(
-  name='impyla',
-  version='1.2',
-  description='Python client for Cloudera Impala',
-  long_description=readme(),
-  author='Uri Laserson',
-  author_email='laserson@cloudera.com',
-  url='https://github.com/laserson/impyla',
-  packages=['impala', 'impala.cli_service'],
-  scripts=['bin/register-impala-udfs.py'],
-  keywords='cloudera impala python hadoop sql hdfs mpp madlib spark distributed',
-  license='Apache License, Version 2.0'
+    name='impyla',
+    version='0.8',
+    description='Python client Numba-compiled UDFs for Cloudera Impala',
+    long_description=readme(),
+    author='Uri Laserson',
+    author_email='laserson@cloudera.com',
+    url='https://github.com/cloudera/impyla',
+    packages=['impala', 'impala.cli_service', 'impala.udf'],
+    package_data={'impala.udf': ['precompiled/*.bc']},
+    scripts=['bin/register-impala-udfs.py'],
+    keywords='cloudera impala python hadoop sql hdfs mpp madlib spark distributed udf numba compiler llvm',
+    license='Apache License, Version 2.0'
 )
